@@ -14,7 +14,7 @@ func TestPositioner(t *testing.T) {
 		ps := positioner.NewPositionerStub()
 		expectedDistance := float64(10)
 
-		ps.FuncGetLinearDistance = func(from, to *positioner.Position) (linearDistance float64) {
+		ps.GetLinearDistanceFunc = func(from, to *positioner.Position) (linearDistance float64) {
 			linearDistance = expectedDistance
 			return
 		}
@@ -43,7 +43,7 @@ func TestPositioner(t *testing.T) {
 			Z: -1,
 		}
 
-		ps.FuncGetLinearDistance = func(from, to *positioner.Position) (linearDistance float64) {
+		ps.GetLinearDistanceFunc = func(from, to *positioner.Position) (linearDistance float64) {
 			if from.X < 0 && from.Y < 0 && from.Z < 0 && to.X < 0 && to.Y < 0 && to.Z < 0 {
 				return 1
 			}
@@ -74,7 +74,7 @@ func TestPositioner(t *testing.T) {
 			Z: 1,
 		}
 
-		ps.FuncGetLinearDistance = func(from, to *positioner.Position) (linearDistance float64) {
+		ps.GetLinearDistanceFunc = func(from, to *positioner.Position) (linearDistance float64) {
 			if from.X > 0 && from.Y > 0 && from.Z > 0 && to.X > 0 && to.Y > 0 && to.Z > 0 {
 				return 1
 			}
